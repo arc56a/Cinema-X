@@ -1,245 +1,361 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>سينما اكس | Cinema X - الحسابات الرسمية</title>
+    <title>Cinema X - Official Social Accounts</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Tajawal & Montserrat -->
+    <!-- Google Fonts: Montserrat (for English) & Tajawal (for Arabic) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&family=Montserrat:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         body {
-            font-family: 'Tajawal', 'Montserrat', sans-serif;
-            background: radial-gradient(circle at top, #1c0d1c 0%, #050305 100%);
+            font-family: 'Montserrat', 'Tajawal', sans-serif;
+            background-color: #050508;
             min-height: 100vh;
             overflow-x: hidden;
             -webkit-tap-highlight-color: transparent;
         }
+
+        /* Glassmorphism Cards with increased contrast for video background */
+        .glass-card {
+            background: rgba(10, 10, 15, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Hover & Active Interactive effects */
+        .glass-card:hover {
+            background: rgba(20, 20, 30, 0.8);
+            border-color: rgba(220, 38, 38, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px -5px rgba(220, 38, 38, 0.15);
+        }
+
+        .glass-card:active {
+            transform: scale(0.97) translateY(0);
+            background: rgba(5, 5, 8, 0.9);
+        }
+
+        /* Custom glow effects */
+        .glow-red {
+            text-shadow: 0 0 15px rgba(220, 38, 38, 0.7);
+        }
         
-        .neon-border-red {
-            box-shadow: 0 0 15px rgba(220, 38, 38, 0.2);
-            border: 1px solid rgba(220, 38, 38, 0.4);
-        }
-        
-        .neon-text-red {
-            text-shadow: 0 0 10px rgba(220, 38, 38, 0.8), 0 0 20px rgba(220, 38, 38, 0.4);
+        .glow-blue {
+            text-shadow: 0 0 10px rgba(14, 165, 233, 0.6);
         }
 
-        /* Ambient Background Glow */
-        .light-beam-1 {
-            background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
-            filter: blur(40px);
-        }
-
-        /* Fluid card interaction */
-        .social-card {
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-        .social-card:active {
-            transform: scale(0.97);
-            background-color: rgba(24, 24, 27, 0.95);
-        }
-
-        /* Disabled / Coming soon card styling */
-        .disabled-card {
-            opacity: 0.55;
-            cursor: not-allowed;
-        }
-
-        /* Perfect Mobile App container width */
+        /* Limit app width for mobile feeling */
         .mobile-container {
-            max-width: 420px;
+            max-width: 430px;
+        }
+
+        /* Direction-based chevron flip */
+        html[dir="rtl"] .arrow-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Language Toggle Active state style */
+        .lang-active {
+            background-color: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+        }
+
+        /* Beautiful Pulsing / Breathing Profile Frame */
+        .profile-glow-ring {
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3), inset 0 0 15px rgba(220, 38, 38, 0.2);
+            animation: breathingGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes breathingGlow {
+            0% {
+                transform: scale(1);
+                border-color: rgba(220, 38, 38, 0.5);
+                box-shadow: 0 0 15px rgba(220, 38, 38, 0.25), inset 0 0 10px rgba(220, 38, 38, 0.15);
+            }
+            100% {
+                transform: scale(1.02);
+                border-color: rgba(14, 165, 233, 0.6);
+                box-shadow: 0 0 25px rgba(14, 165, 233, 0.4), inset 0 0 15px rgba(14, 165, 233, 0.25);
+            }
         }
     </style>
 </head>
-<body class="text-gray-100 flex flex-col justify-between relative selection:bg-red-600 selection:text-white pb-6">
+<body class="text-zinc-200 flex flex-col justify-between relative selection:bg-red-600 selection:text-white pb-6 px-4 h-full">
 
-    <!-- Ambient Glow Effects (Top center optimized for mobile screens) -->
-    <div class="light-beam-1 absolute top-[-50px] left-1/2 -translate-x-1/2 w-[350px] h-[350px] rounded-full pointer-events-none z-0"></div>
+    <!-- VIDEO BACKGROUND CONTAINER (Infinite Loop) -->
+    <div class="fixed inset-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+        <video autoplay loop muted playsinline class="w-full h-full object-cover">
+            <source src="https://h.top4top.io/m_3805qhnow0.mp4" type="video/mp4">
+        </video>
+        <!-- Dark Overlay for premium cinema aesthetics and perfect readability -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/75 to-black/90"></div>
+    </div>
 
-    <!-- MAIN APP-LIKE CONTAINER -->
-    <main class="w-full mobile-container mx-auto px-4 z-10 pt-4 flex-grow">
+    <!-- MAIN APP WRAPPER -->
+    <main class="w-full mobile-container mx-auto z-10 pt-4 flex-grow flex flex-col justify-start">
         
-        <!-- HEADER / BRAND PROFILE -->
-        <header class="text-center mb-6 relative bg-zinc-900/40 border border-zinc-800/30 rounded-3xl p-5 pt-8 shadow-2xl backdrop-blur-md">
-            
-            <!-- Sleek Top-Left Share Icon Button -->
-            <button onclick="shareProfile()" 
-                    class="absolute left-3 top-3 w-10 h-10 rounded-xl bg-zinc-950/80 border border-zinc-800 hover:border-red-600/50 flex items-center justify-center text-zinc-300 hover:text-red-500 active:scale-90 transition-all duration-200 shadow-md"
-                    title="مشاركة الحساب"
-                    aria-label="Share">
-                <i class="fa-solid fa-share-nodes text-base"></i>
-            </button>
+        <!-- Header Top Bar (Share and Language) -->
+        <div class="flex items-center justify-between w-full mb-6 px-1">
+            <!-- Language switcher pill -->
+            <div class="flex items-center gap-1 p-1 bg-black/60 rounded-full border border-white/5 backdrop-blur-md">
+                <button onclick="setLanguage('en')" id="btn-lang-en" class="text-[10px] font-black tracking-wider px-3 py-1.5 rounded-full transition-all duration-300 text-zinc-400 hover:text-white lang-active">
+                    EN
+                </button>
+                <button onclick="setLanguage('ar')" id="btn-lang-ar" class="text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-300 text-zinc-400 hover:text-white">
+                    عربي
+                </button>
+            </div>
 
-            <!-- Profile Avatar with Cinematic Glowing Rings -->
-            <div class="relative w-28 h-28 mx-auto mb-4 flex items-center justify-center">
-                <!-- Glowing rotating decorative rings -->
-                <div class="absolute inset-0 rounded-full border border-dashed border-red-600 animate-[spin_20s_linear_infinite] opacity-50"></div>
-                <div class="absolute inset-1.5 rounded-full border border-solid border-amber-500/60 animate-[spin_12s_linear_infinite_reverse] opacity-70"></div>
+            <!-- Sleek Premium Share Button (Upgraded to genuine share icon) -->
+            <button onclick="shareProfile()" 
+                    class="relative group w-11 h-11 rounded-full bg-black/40 border border-white/10 hover:border-red-500/40 flex items-center justify-center text-zinc-300 hover:text-white active:scale-95 transition-all duration-300 shadow-lg backdrop-blur-md"
+                    id="share-btn"
+                    title="Share Channel">
+                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-red-600/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full"></div>
+                <i class="fa-solid fa-share-nodes text-sm relative z-10 group-hover:scale-110 transition-transform duration-300"></i>
+            </button>
+        </div>
+        
+        <!-- Header Profile Section (Completely flat with no card background) -->
+        <header class="relative text-center mb-8 px-4">
+            <!-- Profile Avatar with animated border -->
+            <div class="relative w-28 h-28 mx-auto mb-5 flex items-center justify-center">
+                <!-- Dual premium pulsing & glowing border ring -->
+                <div class="absolute inset-0 rounded-full border-2 profile-glow-ring transition-all duration-500"></div>
                 
-                <!-- Main Avatar Image -->
-                <div class="w-20 h-20 rounded-full bg-zinc-950 p-0.5 flex items-center justify-center relative z-10 shadow-2xl border border-zinc-800 overflow-hidden">
-                    <img src="https://raw.githubusercontent.com/arc56a/-/main/profile.jpg" 
-                         onerror="this.onerror=null; this.src='https://github.com/arc56a/-/blob/main/profile.jpg?raw=true';" 
-                         class="w-full h-full object-cover rounded-full" 
-                         alt="سينما اكس">
+                <!-- Inner rotating dash gradient for complexity -->
+                <div class="absolute inset-1 rounded-full p-[1.5px] bg-gradient-to-tr from-red-600 via-transparent to-sky-500 animate-[spin_8s_linear_infinite]">
+                    <div class="w-full h-full bg-zinc-950 rounded-full"></div>
+                </div>
+                
+                <!-- Profile Image with double fallback protection -->
+                <div class="w-[98px] h-[98px] rounded-full overflow-hidden relative z-10 p-0.5 bg-zinc-950">
+                    <img src="https://raw.githubusercontent.com/arc56a/Cinema-X/main/profile.jpg" 
+                         onerror="this.onerror=null; this.src='https://github.com/arc56a/Cinema-X/blob/main/profile.jpg?raw=true';" 
+                         class="w-full h-full object-cover rounded-full transition-transform duration-500 hover:scale-110" 
+                         alt="Cinema X">
                 </div>
             </div>
 
-            <!-- Profile Info -->
-            <h1 class="text-2xl font-extrabold tracking-tight mb-2">
-                <span class="text-white">سينما</span>
-                <span class="text-red-600 font-[Montserrat] neon-text-red ml-1">اكس</span>
-                <span class="text-amber-500 font-[Montserrat] font-black tracking-widest block text-sm mt-0.5">CINEMA X</span>
+            <!-- Profile Name with Premium Twitter-Like Verified Blue Checkmark -->
+            <h1 class="text-2xl font-black tracking-tight flex items-center justify-center gap-1.5 mb-2 font-[Montserrat]">
+                <span class="text-white">Cinema</span>
+                <span class="text-red-600 glow-red">X</span>
+                <!-- Twitter Blue Verified Badge with custom glow -->
+                <span class="inline-flex items-center justify-center text-sky-500 glow-blue text-lg" title="Verified Account">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-label="Verified account">
+                        <g><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.99-3.818-3.99-.48 0-.94.1-1.348.27C14.825 2.515 13.512 1.5 12 1.5s-2.825 1.015-3.422 2.28c-.406-.17-.867-.27-1.348-.27-2.108 0-3.818 1.78-3.818 3.99 0 .495.084.965.238 1.4-1.273.65-2.148 2.02-2.148 3.6 0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.71 3.99 3.818 3.99.48 0 .94-.1 1.348-.27.597 1.265 1.91 2.28 3.422 2.28s2.825-1.015 3.422-2.28c.406.17.867.27 1.348.27 2.108 0 3.818-1.78 3.818-3.99 0-.495-.084-.965-.238-1.4 1.273-.65 2.148-2.02 2.148-3.6zm-12.5 4l-4.25-4.25 1.4-1.4 2.85 2.85 6-6 1.4 1.4-7.4 7.4z"></path></g>
+                    </svg>
+                </span>
             </h1>
             
-            <p class="text-zinc-400 text-xs leading-relaxed px-2">
-                بوابتك الأولى لعالم السينما، الفن، والدراما العالمية. نأخذك في رحلة حصرية خلف الكواليس ونقدم لك أقوى المراجعات والأخبار الفنية أولاً بأول! 🎬⭐
+            <!-- Dynamic Translation Bio Section -->
+            <p id="profile-bio" class="text-zinc-300 text-xs leading-relaxed px-2 max-w-[310px] mx-auto font-medium">
+                Your first and only gateway to the world of art and global cinema. Professional reviews, exclusive news, and 24/7 live coverage. ⭐🎬
             </p>
 
-            <!-- Decorative Separator -->
-            <div class="flex items-center justify-center gap-1.5 mt-3">
-                <span class="h-[1px] w-6 bg-gradient-to-r from-transparent to-zinc-700"></span>
-                <i class="fa-solid fa-film text-[10px] text-amber-500/70 animate-pulse"></i>
-                <span class="h-[1px] w-6 bg-gradient-to-l from-transparent to-zinc-700"></span>
+            <!-- Premium minimal divider line -->
+            <div class="flex items-center justify-center gap-2 mt-4">
+                <span class="h-[1px] w-6 bg-zinc-800"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-red-600/80 animate-pulse"></span>
+                <span class="h-[1px] w-6 bg-zinc-800"></span>
             </div>
         </header>
 
-        <!-- SOCIAL MEDIA LINKS SECTION -->
-        <section class="space-y-3 mb-6">
-            <h2 class="text-[10px] font-bold text-zinc-500 uppercase tracking-wider mb-1 pr-1 text-right">قنواتنا ومنصاتنا الرسمية</h2>
+        <!-- SOCIAL LINKS SECTION -->
+        <section class="space-y-3.5 mb-8">
+            <h2 id="section-title" class="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-2 pr-1">
+                Follow our official network
+            </h2>
             
             <!-- TELEGRAM CARD -->
             <a href="https://t.me/cinem3_x" target="_blank" rel="noopener noreferrer" 
-               class="social-card block bg-zinc-900/90 border border-zinc-800/80 hover:border-sky-500/30 rounded-2xl p-3.5 shadow-xl relative overflow-hidden group">
-                <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-sky-500/5 rounded-full blur-xl group-hover:bg-sky-500/10 transition-all duration-300"></div>
+               class="glass-card block rounded-2xl p-4 relative overflow-hidden group">
+                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-sky-500/5 rounded-full blur-xl group-hover:bg-sky-500/10 transition-all duration-500"></div>
                 <div class="flex items-center justify-between relative z-10">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 to-sky-400 flex items-center justify-center text-white text-xl shadow-lg shadow-sky-900/20">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400 text-lg group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-brands fa-telegram"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-sm text-white">قناة التلجرام الرسمية</h3>
-                            <p class="text-[10px] text-zinc-400">أحدث الأفلام والتغطيات المباشرة</p>
+                            <h3 id="tg-title" class="font-bold text-sm text-white flex items-center gap-1.5">
+                                Official Telegram Channel
+                                <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                            </h3>
+                            <p id="tg-desc" class="text-[10px] text-zinc-400 mt-0.5">Exclusive coverage and latest art & drama news</p>
                         </div>
                     </div>
-                    <div class="w-7 h-7 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-400">
-                        <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-sky-400 group-hover:border-sky-500/20 transition-all duration-300">
+                        <i class="fa-solid fa-chevron-right text-[10px] arrow-icon"></i>
                     </div>
                 </div>
             </a>
 
             <!-- INSTAGRAM CARD -->
             <a href="https://www.instagram.com/cinem3_x?igsh=MWZ3N2d0cTM4bDM1eQ==" target="_blank" rel="noopener noreferrer" 
-               class="social-card block bg-zinc-900/90 border border-zinc-800/80 hover:border-pink-500/30 rounded-2xl p-3.5 shadow-xl relative overflow-hidden group">
-                <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-pink-500/5 rounded-full blur-xl group-hover:bg-pink-500/10 transition-all duration-300"></div>
+               class="glass-card block rounded-2xl p-4 relative overflow-hidden group">
+                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-pink-500/5 rounded-full blur-xl group-hover:bg-pink-500/10 transition-all duration-500"></div>
                 <div class="flex items-center justify-between relative z-10">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-pink-500 to-amber-500 flex items-center justify-center text-white text-xl shadow-lg shadow-pink-900/20">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-purple-500/10 via-pink-500/10 to-amber-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400 text-lg group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-brands fa-instagram"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-sm text-white">حساب الانستقرام</h3>
-                            <p class="text-[10px] text-zinc-400">ستوريات يومية ومقتطفات سينمائية مبهرة</p>
+                            <h3 id="ig-title" class="font-bold text-sm text-white">Instagram Account</h3>
+                            <p id="ig-desc" class="text-[10px] text-zinc-400 mt-0.5">Fun snippets and behind the scenes of global productions</p>
                         </div>
                     </div>
-                    <div class="w-7 h-7 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-400">
-                        <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-pink-400 group-hover:border-pink-500/20 transition-all duration-300">
+                        <i class="fa-solid fa-chevron-right text-[10px] arrow-icon"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- TIKTOK CARD -->
+            <a href="https://www.tiktok.com/@cinem3_x?_r=1&_t=ZS-96szIzzysSN" target="_blank" rel="noopener noreferrer" 
+               class="glass-card block rounded-2xl p-4 relative overflow-hidden group">
+                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-teal-500/5 rounded-full blur-xl group-hover:bg-teal-500/10 transition-all duration-500"></div>
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-zinc-950 border border-teal-500/20 flex items-center justify-center text-teal-400 text-lg relative group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-brands fa-tiktok z-10"></i>
+                            <div class="absolute inset-0 rounded-xl border border-red-500/20 scale-105 opacity-60"></div>
+                        </div>
+                        <div>
+                            <h3 id="tt-title" class="font-bold text-sm text-white">TikTok Account</h3>
+                            <p id="tt-desc" class="text-[10px] text-zinc-400 mt-0.5">Quick reviews and captivating cinematic short videos</p>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-teal-400 group-hover:border-teal-500/20 transition-all duration-300">
+                        <i class="fa-solid fa-chevron-right text-[10px] arrow-icon"></i>
                     </div>
                 </div>
             </a>
 
             <!-- FACEBOOK CARD -->
             <a href="https://www.facebook.com/share/1CwBbRvRLN/" target="_blank" rel="noopener noreferrer" 
-               class="social-card block bg-zinc-900/90 border border-zinc-800/80 hover:border-blue-600/30 rounded-2xl p-3.5 shadow-xl relative overflow-hidden group">
-                <div class="absolute -right-8 -bottom-8 w-24 h-24 bg-blue-600/5 rounded-full blur-xl group-hover:bg-blue-600/10 transition-all duration-300"></div>
+               class="glass-card block rounded-2xl p-4 relative overflow-hidden group">
+                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-blue-600/5 rounded-full blur-xl group-hover:bg-blue-600/10 transition-all duration-500"></div>
                 <div class="flex items-center justify-between relative z-10">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 to-blue-500 flex items-center justify-center text-white text-xl shadow-lg shadow-blue-900/20">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400 text-lg group-hover:scale-110 transition-transform duration-300">
                             <i class="fa-brands fa-facebook-f"></i>
                         </div>
                         <div>
-                            <h3 class="font-bold text-sm text-white">صفحة الفيسبوك</h3>
-                            <p class="text-[10px] text-zinc-400">مناقشات تفصيلية وآخر الأخبار</p>
+                            <h3 id="fb-title" class="font-bold text-sm text-white">Facebook Page</h3>
+                            <p id="fb-desc" class="text-[10px] text-zinc-400 mt-0.5">Weekly detailed discussions and watch recommendations</p>
                         </div>
                     </div>
-                    <div class="w-7 h-7 rounded-full bg-zinc-800/50 flex items-center justify-center text-zinc-400">
-                        <i class="fa-solid fa-arrow-left text-xs"></i>
+                    <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-blue-400 group-hover:border-blue-500/20 transition-all duration-300">
+                        <i class="fa-solid fa-chevron-right text-[10px] arrow-icon"></i>
                     </div>
                 </div>
             </a>
-
-            <!-- TWITTER (X) CARD - SOON -->
-            <div onclick="showSoonToast('تويتر (X)')" 
-                 class="social-card disabled-card block bg-zinc-950/40 border border-zinc-900/60 rounded-2xl p-3.5 shadow-xl relative overflow-hidden">
-                <div class="flex items-center justify-between relative z-10">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-lg shadow-inner">
-                            <i class="fa-brands fa-x-twitter"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-1.5">
-                                <h3 class="font-bold text-sm text-zinc-500">حساب تويتر (X)</h3>
-                                <span class="text-[8px] font-black bg-amber-500/10 text-amber-500 px-1.5 py-0.5 rounded-md border border-amber-500/20">قريباً</span>
-                            </div>
-                            <p class="text-[10px] text-zinc-600">آراء سريعة وتغطيات حية</p>
-                        </div>
-                    </div>
-                    <div class="w-7 h-7 rounded-full bg-zinc-950 flex items-center justify-center text-zinc-700">
-                        <i class="fa-solid fa-lock text-[10px]"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TIKTOK CARD - SOON -->
-            <div onclick="showSoonToast('تيك توك')" 
-                 class="social-card disabled-card block bg-zinc-950/40 border border-zinc-900/60 rounded-2xl p-3.5 shadow-xl relative overflow-hidden">
-                <div class="flex items-center justify-between relative z-10">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-500 text-lg shadow-inner">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </div>
-                        <div>
-                            <div class="flex items-center gap-1.5">
-                                <h3 class="font-bold text-sm text-zinc-500">حساب تيك توك</h3>
-                                <span class="text-[8px] font-black bg-amber-500/10 text-amber-500 px-1.5 py-0.5 rounded-md border border-amber-500/20">قريباً</span>
-                            </div>
-                            <p class="text-[10px] text-zinc-600">تحليلات وفيديوهات سينمائية قصيرة</p>
-                        </div>
-                    </div>
-                    <div class="w-7 h-7 rounded-full bg-zinc-950 flex items-center justify-center text-zinc-700">
-                        <i class="fa-solid fa-lock text-[10px]"></i>
-                    </div>
-                </div>
-            </div>
 
         </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="w-full text-center py-4 z-10 text-[10px] text-zinc-600 border-t border-zinc-900/60 mt-4">
-        <p class="mb-0.5">جميع الحقوق محفوظة لمنصة <span class="text-red-500 font-bold">سينما اكس © 2026</span></p>
-        <p class="text-[9px] text-zinc-700">بوابة الفن السابع ومحبي السينما</p>
+    <footer class="w-full text-center py-4 z-10 mt-auto">
+        <p id="footer-rights" class="text-[10px] text-zinc-500 tracking-wide">
+            All rights reserved to <span class="text-red-500 font-extrabold glow-red">Cinema X © 2026</span>
+        </p>
+        <p id="footer-subtitle" class="text-[8px] text-zinc-600 tracking-widest uppercase mt-0.5">CINEMATIC SEVENTH ART PORTAL</p>
     </footer>
 
-    <!-- INTERACTIVE FLOATING TOAST NOTIFICATION -->
-    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900/95 border border-red-600 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2.5 z-50 pointer-events-none opacity-0 transition-all duration-500 scale-90 backdrop-blur-md">
-        <span id="toast-icon-wrapper" class="w-7 h-7 rounded-full bg-red-600/20 flex items-center justify-center text-red-500 text-xs">
+    <!-- INTERACTIVE TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-950/95 border border-zinc-800 text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center gap-3 z-50 pointer-events-none opacity-0 transition-all duration-500 scale-90 backdrop-blur-md">
+        <span id="toast-icon-wrapper" class="w-7 h-7 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">
             <i id="toast-icon" class="fa-solid fa-check"></i>
         </span>
-        <span id="toast-message" class="text-xs font-semibold">تم نسخ الرابط بنجاح!</span>
+        <span id="toast-message" class="text-xs font-semibold">Link copied successfully!</span>
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
-        
-        // Copy to clipboard utility using legacy document.execCommand (Safe for iframe/sandbox restrictions)
+        // Multilingual translations store
+        const translations = {
+            ar: {
+                bio: "بوابتك الأولى والوحيدة لعالم الفن والسينما العالمية. مراجعات احترافية، أخبار حصرية، وتغطيات مباشرة على مدار الساعة. ⭐🎬",
+                followNetwork: "تابع شبكتنا الرسمية",
+                tgTitle: "قناة التلجرام الرسمية",
+                tgDesc: "تغطيات حصرية وأحدث أخبار الفن والدراما",
+                igTitle: "حساب الانستقرام",
+                igDesc: "مقتطفات ممتعة وكواليس الإنتاجات العالمية",
+                ttTitle: "حساب التيك توك",
+                ttDesc: "مراجعات سريعة وفيديوهات سينمائية خاطفة",
+                fbTitle: "صفحة الفيسبوك",
+                fbDesc: "نقاشات أسبوعية تفصيلية وتوصيات المشاهدة",
+                footerRights: "جميع الحقوق محفوظة لمنصة <span class='text-red-500 font-extrabold glow-red'>سينما اكس © 2026</span>",
+                footerSubtitle: "بوابة الفن السابع السينمائية",
+                toastCopySuccess: "تم نسخ رابط الصفحة! يمكنك مشاركته الآن.",
+                shareFallbackMsg: "تم نسخ الرابط!"
+            },
+            en: {
+                bio: "Your first and only gateway to the world of art and global cinema. Professional reviews, exclusive news, and 24/7 live coverage. ⭐🎬",
+                followNetwork: "Follow our official network",
+                tgTitle: "Official Telegram Channel",
+                tgDesc: "Exclusive coverage and latest art & drama news",
+                igTitle: "Instagram Account",
+                igDesc: "Fun snippets and behind the scenes of global productions",
+                ttTitle: "TikTok Account",
+                ttDesc: "Quick reviews and captivating cinematic short videos",
+                fbTitle: "Facebook Page",
+                fbDesc: "Weekly detailed discussions and watch recommendations",
+                footerRights: "All rights reserved to <span class='text-red-500 font-extrabold glow-red'>Cinema X © 2026</span>",
+                footerSubtitle: "CINEMATIC SEVENTH ART PORTAL",
+                toastCopySuccess: "Link copied to clipboard! You can share it now.",
+                shareFallbackMsg: "Link copied!"
+            }
+        };
+
+        let currentLang = 'en';
+
+        // Set Language dynamically with smooth DOM transitions
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Set direction & font scaling based on language
+            if (lang === 'ar') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'ar');
+                document.getElementById('btn-lang-ar').classList.add('lang-active');
+                document.getElementById('btn-lang-en').classList.remove('lang-active');
+                document.body.style.fontFamily = "'Tajawal', sans-serif";
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                document.getElementById('btn-lang-en').classList.add('lang-active');
+                document.getElementById('btn-lang-ar').classList.remove('lang-active');
+                document.body.style.fontFamily = "'Montserrat', sans-serif";
+            }
+
+            // Update UI texts
+            const t = translations[lang];
+            document.getElementById('profile-bio').innerHTML = t.bio;
+            document.getElementById('section-title').innerText = t.followNetwork;
+            document.getElementById('tg-title').innerHTML = t.tgTitle + (lang === 'ar' ? ' <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>' : ' <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>');
+            document.getElementById('tg-desc').innerText = t.tgDesc;
+            document.getElementById('ig-title').innerText = t.igTitle;
+            document.getElementById('ig-desc').innerText = t.igDesc;
+            document.getElementById('tt-title').innerText = t.ttTitle;
+            document.getElementById('tt-desc').innerText = t.ttDesc;
+            document.getElementById('fb-title').innerText = t.fbTitle;
+            document.getElementById('fb-desc').innerText = t.fbDesc;
+            document.getElementById('footer-rights').innerHTML = t.footerRights;
+            document.getElementById('footer-subtitle').innerText = t.footerSubtitle;
+        }
+
+        // Clip board helper for secure fallback
         function copyToClipboard(text) {
             const tempInput = document.createElement('input');
             tempInput.style.position = 'absolute';
@@ -251,26 +367,14 @@
             document.body.removeChild(tempInput);
         }
 
-        // Elegant Toast feedback helper
-        function showToast(message, isInfo = false) {
+        // Show elegant popup Toast notification
+        function showToast(message) {
             const toast = document.getElementById('toast');
             const toastMessage = document.getElementById('toast-message');
-            const toastIcon = document.getElementById('toast-icon');
-            const toastIconWrapper = document.getElementById('toast-icon-wrapper');
             
             toastMessage.textContent = message;
             
-            if (isInfo) {
-                toastIcon.className = "fa-solid fa-circle-info";
-                toastIconWrapper.className = "w-7 h-7 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500 text-xs";
-                toast.style.borderColor = "rgba(245, 158, 11, 0.8)";
-            } else {
-                toastIcon.className = "fa-solid fa-check";
-                toastIconWrapper.className = "w-7 h-7 rounded-full bg-red-600/20 flex items-center justify-center text-red-500 text-xs";
-                toast.style.borderColor = "rgba(220, 38, 38, 0.8)";
-            }
-            
-            // Trigger animation
+            // Show toast animation
             toast.classList.remove('opacity-0', 'scale-90', 'pointer-events-none');
             toast.classList.add('opacity-100', 'scale-100');
             
@@ -280,22 +384,21 @@
             }, 3000);
         }
 
-        // Premium Interactive Sharing Function (Uses Web Share API on mobiles, falls back gracefully)
+        // Real system Web Share with automatic copy clipboard fallback
         function shareProfile() {
             const shareData = {
-                title: 'سينما اكس | Cinema X',
-                text: 'تابع الحسابات الرسمية لمنصة سينما اكس - بوابتك الأولى لعالم السينما والدراما العالمية!',
+                title: 'Cinema X',
+                text: currentLang === 'ar' ? 'تابع الحسابات الرسمية لمنصة سينما اكس - بوابتك لعالم السينما والدراما!' : 'Follow the official accounts of Cinema X - Your gateway to cinema and drama!',
                 url: window.location.href
             };
 
             if (navigator.share) {
                 navigator.share(shareData)
-                    .then(() => {
-                        // Shared successfully
-                    })
+                    .then(() => {})
                     .catch((err) => {
-                        // Fallback to simple copy on dismiss or error
-                        fallbackCopy();
+                        if (err.name !== 'AbortError') {
+                            fallbackCopy();
+                        }
                     });
             } else {
                 fallbackCopy();
@@ -303,24 +406,20 @@
         }
 
         function fallbackCopy() {
-            const pageUrl = window.location.href;
-            copyToClipboard(pageUrl);
-            showToast('تم نسخ رابط الصفحة! يمكنك الآن مشاركته مباشرة.');
+            copyToClipboard(window.location.href);
+            showToast(translations[currentLang].toastCopySuccess);
         }
 
-        // Feedback for "Coming Soon" channels
-        function showSoonToast(platformName) {
-            showToast(`حساب ${platformName} سينطلق قريباً جداً، ترقّبونا! ✨`, true);
-        }
-
-        // Smooth sequential load-in animation
+        // Execute sequential animations and set default language on page load
         window.onload = function() {
-            const cards = document.querySelectorAll('.social-card');
+            setLanguage('ar'); // Default to Arabic, can switch smoothly
+
+            const cards = document.querySelectorAll('.glass-card');
             cards.forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(12px)';
                 setTimeout(() => {
-                    card.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    card.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
                     card.style.opacity = '1';
                     card.style.transform = 'translateY(0)';
                 }, 80 * (index + 1));
