@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="h-full">
+<html lang="ar" dir="rtl" class="h-full">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -15,7 +15,7 @@
     
     <style>
         body {
-            font-family: 'Montserrat', 'Tajawal', sans-serif;
+            font-family: 'Tajawal', 'Montserrat', sans-serif;
             background-color: #050508;
             min-height: 100vh;
             overflow-x: hidden;
@@ -98,7 +98,7 @@
             <source src="https://h.top4top.io/m_3805qhnow0.mp4" type="video/mp4">
         </video>
         <!-- Dark Overlay for premium cinema aesthetics and perfect readability -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/75 to-black/90"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-black/80 to-black/95"></div>
     </div>
 
     <!-- MAIN APP WRAPPER -->
@@ -108,10 +108,10 @@
         <div class="flex items-center justify-between w-full mb-6 px-1">
             <!-- Language switcher pill -->
             <div class="flex items-center gap-1 p-1 bg-black/60 rounded-full border border-white/5 backdrop-blur-md">
-                <button onclick="setLanguage('en')" id="btn-lang-en" class="text-[10px] font-black tracking-wider px-3 py-1.5 rounded-full transition-all duration-300 text-zinc-400 hover:text-white lang-active">
+                <button onclick="setLanguage('en')" id="btn-lang-en" class="text-[10px] font-black tracking-wider px-3 py-1.5 rounded-full transition-all duration-300 text-zinc-400 hover:text-white">
                     EN
                 </button>
-                <button onclick="setLanguage('ar')" id="btn-lang-ar" class="text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-300 text-zinc-400 hover:text-white">
+                <button onclick="setLanguage('ar')" id="btn-lang-ar" class="text-[11px] font-bold px-3 py-1.5 rounded-full transition-all duration-300 text-zinc-400 hover:text-white lang-active">
                     عربي
                 </button>
             </div>
@@ -161,7 +161,7 @@
             
             <!-- Dynamic Translation Bio Section -->
             <p id="profile-bio" class="text-zinc-300 text-xs leading-relaxed px-2 max-w-[310px] mx-auto font-medium">
-                Your first and only gateway to the world of art and global cinema. Professional reviews, exclusive news, and 24/7 live coverage. ⭐🎬
+                بوابتك الأولى والوحيدة لعالم الفن والسينما العالمية. مراجعات احترافية، أخبار حصرية، وتغطيات مباشرة على مدار الساعة. ⭐🎬
             </p>
 
             <!-- Premium minimal divider line -->
@@ -175,9 +175,32 @@
         <!-- SOCIAL LINKS SECTION -->
         <section class="space-y-3.5 mb-8">
             <h2 id="section-title" class="text-[10px] font-black text-zinc-500 uppercase tracking-widest mb-2 pr-1">
-                Follow our official network
+                تابع شبكتنا الرسمية
             </h2>
             
+            <!-- OFFICIAL MOVIES WEBSITE CARD -->
+            <a href="https://cinema-x-db339.web.app" target="_blank" rel="noopener noreferrer" 
+               class="glass-card block rounded-2xl p-4 relative overflow-hidden group">
+                <div class="absolute -right-6 -bottom-6 w-20 h-20 bg-red-600/5 rounded-full blur-xl group-hover:bg-red-600/10 transition-all duration-500"></div>
+                <div class="flex items-center justify-between relative z-10">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-11 h-11 rounded-xl bg-red-600/10 border border-red-500/20 flex items-center justify-center text-red-500 text-lg group-hover:scale-110 transition-transform duration-300">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <div>
+                            <h3 id="web-title" class="font-bold text-sm text-white flex items-center gap-1.5">
+                                الموقع الرسمي للافلام
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                            </h3>
+                            <p id="web-desc" class="text-[10px] text-zinc-400 mt-0.5">منصتنا الخاصة لمشاهدة وتصفح أحدث الأعمال الحصرية 🎬</p>
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-red-500 group-hover:border-red-500/20 transition-all duration-300">
+                        <i class="fa-solid fa-chevron-right text-[10px] arrow-icon"></i>
+                    </div>
+                </div>
+            </a>
+
             <!-- TELEGRAM CARD -->
             <a href="https://t.me/cinem3_x" target="_blank" rel="noopener noreferrer" 
                class="glass-card block rounded-2xl p-4 relative overflow-hidden group">
@@ -189,10 +212,10 @@
                         </div>
                         <div>
                             <h3 id="tg-title" class="font-bold text-sm text-white flex items-center gap-1.5">
-                                Official Telegram Channel
+                                قناة التلجرام الرسمية
                                 <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
                             </h3>
-                            <p id="tg-desc" class="text-[10px] text-zinc-400 mt-0.5">Exclusive coverage and latest art & drama news</p>
+                            <p id="tg-desc" class="text-[10px] text-zinc-400 mt-0.5">تغطيات حصرية وأحدث أخبار الفن والدراما</p>
                         </div>
                     </div>
                     <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-sky-400 group-hover:border-sky-500/20 transition-all duration-300">
@@ -211,8 +234,8 @@
                             <i class="fa-brands fa-instagram"></i>
                         </div>
                         <div>
-                            <h3 id="ig-title" class="font-bold text-sm text-white">Instagram Account</h3>
-                            <p id="ig-desc" class="text-[10px] text-zinc-400 mt-0.5">Fun snippets and behind the scenes of global productions</p>
+                            <h3 id="ig-title" class="font-bold text-sm text-white">حساب الانستقرام</h3>
+                            <p id="ig-desc" class="text-[10px] text-zinc-400 mt-0.5">مقتطفات ممتعة وكواليس الإنتاجات العالمية</p>
                         </div>
                     </div>
                     <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-pink-400 group-hover:border-pink-500/20 transition-all duration-300">
@@ -232,8 +255,8 @@
                             <div class="absolute inset-0 rounded-xl border border-red-500/20 scale-105 opacity-60"></div>
                         </div>
                         <div>
-                            <h3 id="tt-title" class="font-bold text-sm text-white">TikTok Account</h3>
-                            <p id="tt-desc" class="text-[10px] text-zinc-400 mt-0.5">Quick reviews and captivating cinematic short videos</p>
+                            <h3 id="tt-title" class="font-bold text-sm text-white">حساب التيك توك</h3>
+                            <p id="tt-desc" class="text-[10px] text-zinc-400 mt-0.5">مراجعات سريعة وفيديوهات سينمائية خاطفة</p>
                         </div>
                     </div>
                     <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-teal-400 group-hover:border-teal-500/20 transition-all duration-300">
@@ -252,8 +275,8 @@
                             <i class="fa-brands fa-facebook-f"></i>
                         </div>
                         <div>
-                            <h3 id="fb-title" class="font-bold text-sm text-white">Facebook Page</h3>
-                            <p id="fb-desc" class="text-[10px] text-zinc-400 mt-0.5">Weekly detailed discussions and watch recommendations</p>
+                            <h3 id="fb-title" class="font-bold text-sm text-white">صفحة الفيسبوك</h3>
+                            <p id="fb-desc" class="text-[10px] text-zinc-400 mt-0.5">نقاشات أسبوعية تفصيلية وتوصيات المشاهدة</p>
                         </div>
                     </div>
                     <div class="w-8 h-8 rounded-full bg-black/60 border border-white/5 flex items-center justify-center text-zinc-400 group-hover:text-blue-400 group-hover:border-blue-500/20 transition-all duration-300">
@@ -268,9 +291,9 @@
     <!-- FOOTER -->
     <footer class="w-full text-center py-4 z-10 mt-auto">
         <p id="footer-rights" class="text-[10px] text-zinc-500 tracking-wide">
-            All rights reserved to <span class="text-red-500 font-extrabold glow-red">Cinema X © 2026</span>
+            جميع الحقوق محفوظة لمنصة <span class="text-red-500 font-extrabold glow-red">سينما اكس © 2026</span>
         </p>
-        <p id="footer-subtitle" class="text-[8px] text-zinc-600 tracking-widest uppercase mt-0.5">CINEMATIC SEVENTH ART PORTAL</p>
+        <p id="footer-subtitle" class="text-[8px] text-zinc-600 tracking-widest uppercase mt-0.5">بوابة الفن السابع السينمائية</p>
     </footer>
 
     <!-- INTERACTIVE TOAST NOTIFICATION -->
@@ -278,15 +301,18 @@
         <span id="toast-icon-wrapper" class="w-7 h-7 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-xs">
             <i id="toast-icon" class="fa-solid fa-check"></i>
         </span>
-        <span id="toast-message" class="text-xs font-semibold">Link copied successfully!</span>
+        <span id="toast-message" class="text-xs font-semibold">تم نسخ الرابط!</span>
     </div>
 
+    <!-- JAVASCRIPT STATE LOGIC AND TRANSLATION CONTROLLERS -->
     <script>
         // Multilingual translations store
         const translations = {
             ar: {
                 bio: "بوابتك الأولى والوحيدة لعالم الفن والسينما العالمية. مراجعات احترافية، أخبار حصرية، وتغطيات مباشرة على مدار الساعة. ⭐🎬",
                 followNetwork: "تابع شبكتنا الرسمية",
+                webTitle: "الموقع الرسمي للافلام",
+                webDesc: "منصتنا الخاصة لمشاهدة وتصفح أحدث الأعمال الحصرية 🎬",
                 tgTitle: "قناة التلجرام الرسمية",
                 tgDesc: "تغطيات حصرية وأحدث أخبار الفن والدراما",
                 igTitle: "حساب الانستقرام",
@@ -303,6 +329,8 @@
             en: {
                 bio: "Your first and only gateway to the world of art and global cinema. Professional reviews, exclusive news, and 24/7 live coverage. ⭐🎬",
                 followNetwork: "Follow our official network",
+                webTitle: "Official Movies Website",
+                webDesc: "Our private platform to watch & browse the latest exclusive releases 🎬",
                 tgTitle: "Official Telegram Channel",
                 tgDesc: "Exclusive coverage and latest art & drama news",
                 igTitle: "Instagram Account",
@@ -318,7 +346,7 @@
             }
         };
 
-        let currentLang = 'en';
+        let currentLang = 'ar'; // Set Arabic as default language programmatically
 
         // Set Language dynamically with smooth DOM transitions
         function setLanguage(lang) {
@@ -343,6 +371,8 @@
             const t = translations[lang];
             document.getElementById('profile-bio').innerHTML = t.bio;
             document.getElementById('section-title').innerText = t.followNetwork;
+            document.getElementById('web-title').innerHTML = t.webTitle + (lang === 'ar' ? ' <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>' : ' <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>');
+            document.getElementById('web-desc').innerText = t.webDesc;
             document.getElementById('tg-title').innerHTML = t.tgTitle + (lang === 'ar' ? ' <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>' : ' <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>');
             document.getElementById('tg-desc').innerText = t.tgDesc;
             document.getElementById('ig-title').innerText = t.igTitle;
@@ -412,7 +442,7 @@
 
         // Execute sequential animations and set default language on page load
         window.onload = function() {
-            setLanguage('ar'); // Default to Arabic, can switch smoothly
+            setLanguage('ar'); // Force and ensure Arabic default load immediately
 
             const cards = document.querySelectorAll('.glass-card');
             cards.forEach((card, index) => {
